@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark mode (VS Code Dark+) */
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 207 82% 66%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 207 82% 66%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 207 82% 66%;
+    --radius: 0.5rem;
+    /* Neon accents */
+    --neon-pink: 330 100% 71%;
+    --neon-cyan: 188 100% 50%;
+  }
+
+  .light {
+    /* Light mode */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 207 82% 66%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 7%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 207 82% 66%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 207 82% 66%;
+    /* Neon accents (adjusted for light mode) */
+    --neon-pink: 330 100% 65%;
+    --neon-cyan: 188 100% 45%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism effect */
+  .glass {
+    @apply bg-card/80 backdrop-blur-md border border-border/50;
+  }
+
+  .glass-strong {
+    @apply bg-card/90 backdrop-blur-lg border border-border/70;
+  }
+
+  /* Neon glow effects */
+  .neon-pink {
+    text-shadow: 0 0 10px hsl(var(--neon-pink)), 0 0 20px hsl(var(--neon-pink)), 0 0 30px hsl(var(--neon-pink));
+  }
+
+  .neon-cyan {
+    text-shadow: 0 0 10px hsl(var(--neon-cyan)), 0 0 20px hsl(var(--neon-cyan)), 0 0 30px hsl(var(--neon-cyan));
+  }
+
+  .neon-pink-glow {
+    box-shadow: 0 0 10px hsl(var(--neon-pink) / 0.5), 0 0 20px hsl(var(--neon-pink) / 0.3);
+  }
+
+  .neon-cyan-glow {
+    box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.5), 0 0 20px hsl(var(--neon-cyan) / 0.3);
+  }
+
+  /* Blurred background with neon accents */
+  .bg-neon-gradient {
+    background: radial-gradient(circle at 20% 50%, hsl(var(--neon-pink) / 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, hsl(var(--neon-cyan) / 0.1) 0%, transparent 50%);
+  }
+
+  /* Easter egg active state */
+  .easter-egg-active {
+    animation: rainbow 2s linear infinite;
+  }
+
+  @keyframes rainbow {
+    0% { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+
+  /* Smooth scroll */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+/* Typing effect animation */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: hsl(207, 82%, 66%);
+  }
+}
+

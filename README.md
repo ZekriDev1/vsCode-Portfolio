@@ -86,6 +86,16 @@ The theme uses VS Code Dark+ color palette:
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
 
+## 🔐 Environment Variables
+
+The contact form sends emails using [Resend](https://resend.com/). Create a `.env.local` file and add:
+
+```
+RESEND_API_KEY=your_resend_api_key
+```
+
+Make sure the `from` address configured in `app/api/contact/route.ts` is verified in your Resend dashboard.
+
 ## 📝 Next Steps
 
 Phase 1 is complete! You can now:
